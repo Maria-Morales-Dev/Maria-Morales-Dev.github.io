@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Metadatos de codificación y viewport defensivo para dispositivos móviles -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>María Morales Castillo · Desarrolladora de Aplicaciones Multiplataforma</title>
+    <meta name="description" content="Currículum y portafolio profesional de María Morales Castillo. Desarrollo de Aplicaciones Multiplataforma (Java, Android, SQL, UI/UX). Disponible para prácticas de empresa y contratación." />
+
+    <!-- Tipografías: IBM Plex Mono para titulares/código e Inter para cuerpo de texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Hoja de estilos con Sistema de Diseño Unificado (Single Source of Truth) -->
+    <link rel="stylesheet" href="./estilos.css">
+  </head>
+  <body>
+
+    <!-- ====================================================================
+         1. BARRA SUPERIOR (HEADER)
+         Navegación semántica: Marca, enlaces de escritorio, botón CV y menú móvil
+         ==================================================================== -->
+    <header class="barra-navegacion">
+      <div class="contenedor barra-navegacion-interior">
+        
+        <!-- Marca / Terminal Prompt -->
+        <a href="#" class="logo-maria" aria-label="Inicio maria.morales">
+          <span class="cursor-terminal" aria-hidden="true">&gt;_</span>
+          <span>maria.morales</span>
+        </a>
+
+        <!-- Enlaces principales de escritorio -->
+        <nav class="enlaces-nav" aria-label="Navegación principal">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#habilidades">Habilidades</a>
+          <a href="#curriculum">Currículum</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <!-- Bloque de acciones en la cabecera (ambos botones con idéntico tamaño y altura) -->
+        <div class="header-acciones">
+          <a href="https://www.linkedin.com/in/maria-morales-castillo/" target="_blank" rel="noopener noreferrer" class="boton-secundario btn-nav-accion" aria-label="Perfil de LinkedIn de María Morales Castillo">
+            LinkedIn ↗
+          </a>
+          <a href="#curriculum" class="boton-primario btn-nav-accion">
+            Currículum
+          </a>
+          <button type="button" id="btn-menu-movil" class="btn-hamburguesa" aria-label="Abrir menú de navegación" onclick="toggleMenuMovil()">
+            <span aria-hidden="true">☰</span>
+            <span>MENÚ</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Menú desplegable retro para terminales móviles -->
+      <nav id="menu-movil-desplegable" class="menu-movil-desplegable" aria-label="Menú móvil">
+        <div class="contenedor menu-movil-interior">
+          <a href="#proyectos" onclick="cerrarMenuMovil()">&gt; Proyectos</a>
+          <a href="#habilidades" onclick="cerrarMenuMovil()">&gt; Habilidades</a>
+          <a href="#curriculum" onclick="cerrarMenuMovil()">&gt; Currículum</a>
+          <a href="#contacto" onclick="cerrarMenuMovil()">&gt; Contacto</a>
+          <a href="https://www.linkedin.com/in/maria-morales-castillo/" target="_blank" rel="noopener noreferrer" onclick="cerrarMenuMovil()">&gt; LinkedIn ↗</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ====================================================================
+         CONTENIDO PRINCIPAL
+         ==================================================================== -->
+    <main>
+
+      <!-- ==================================================================
+           2. SECCIÓN HERO (PORTADA EDITORIAL DE ALTO IMPACTO)
+           ================================================================== -->
+      <section class="seccion-hero">
+        <div class="contenedor">
+          
+          <div class="hero-content-wide">
+            
+            <div class="hero-kicker-cajitas" aria-label="Información destacada">
+              <span class="hero-cajita-item">Desarrollo de Aplicaciones Multiplataforma (DAM)</span>
+              <span class="hero-cajita-item hero-cajita-disponible"><span class="kicker-dot">●</span> Disponible para Prácticas de Empresa &amp; Contratación</span>
+              <span class="hero-cajita-item">Granada, España</span>
+            </div>
+
+            <h1 class="hero-titulo-grande">
+              María Morales Castillo
+            </h1>
+
+            <div class="hero-subtitulo-profesional">
+              <span class="prompt-flecha" aria-hidden="true">&gt;</span> Perfil orientado a <span class="destaque-azul">Frontend &amp; Interfaces (UI/UX)</span> complementado con <span class="destaque-azul">Lógica Backend &amp; Datos</span>
+            </div>
+
+            <p class="hero-descripcion-grande">
+              Formación previa en Diseño Gráfico. Cuento con un marcado perfil orientado a frontend e interfaces, complementado con el aprendizaje de la lógica backend para comprender el ciclo completo y el funcionamiento del software. Mi objetivo es desarrollar soluciones multiplataforma intuitivas y funcionales, desde herramientas de gestión hasta aplicaciones móviles centradas en el usuario final, aportando compromiso, criterio visual y adaptabilidad en mis prácticas de empresa.
+            </p>
+
+            <!-- Acciones principales -->
+            <div class="hero-acciones">
+              <a href="#contacto" class="boton-primario">
+                &gt; Contactar
+              </a>
+            </div>
+
+            <!-- Tira técnica editorial minimalista -->
+            <div class="hero-tech-strip" aria-label="Especialidades técnicas principales">
+              <span class="tech-item"><span class="tech-bullet">›</span> Java (POO / Swing / JDBC)</span>
+              <span class="tech-item"><span class="tech-bullet">›</span> Android (Kotlin / XML / Activities)</span>
+              <span class="tech-item"><span class="tech-bullet">›</span> UI/UX (Figma / Adobe Suite)</span>
+              <span class="tech-item"><span class="tech-bullet">›</span> Bases de Datos (MySQL / E-R / Triggers)</span>
+              <span class="tech-item"><span class="tech-bullet">›</span> Git &amp; GitHub</span>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           3. SECCIÓN PROYECTOS (PORTAFOLIO TÉCNICO)
+           ================================================================== -->
+      <section id="proyectos" class="seccion-padding">
+        <div class="contenedor">
+          
+          <div class="proyectos-barra-superior">
+            <div>
+              <h2 class="seccion-titulo">Proyectos de Software Desarrollados</h2>
+              <p class="seccion-desc">
+                Aplicaciones de escritorio, terminales móviles Android y módulos de persistencia SQL desarrollados con buenas prácticas de ingeniería.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pestañas de filtrado por categoría técnica -->
+          <div class="filtros-tabs">
+            <button type="button" class="tab-btn activo" data-categoria="Todos">Todos</button>
+            <button type="button" class="tab-btn" data-categoria="Java">Java</button>
+            <button type="button" class="tab-btn" data-categoria="Kotlin">Kotlin</button>
+            <button type="button" class="tab-btn" data-categoria="SQL">SQL</button>
+            <button type="button" class="tab-btn" data-categoria="Acceso a Datos">Acceso a Datos</button>
+          </div>
+
+          <!-- Rejilla reactiva de proyectos (inyectada por app.js) -->
+          <div id="rejilla-proyectos" class="grid-proyectos">
+            <!-- Rellenado dinámicamente por la capa de presentación de app.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           4. SECCIÓN HABILIDADES TÉCNICAS (REJILLA MODULAR 6 ÁREAS)
+           ================================================================== -->
+      <section id="habilidades" class="seccion-padding">
+        <div class="contenedor">
+          
+          <div class="seccion-header">
+            <h2 class="seccion-titulo">Tecnologías &amp; Desarrollo Multiplataforma</h2>
+            <p class="seccion-desc">
+              Sólidas bases en desarrollo de software, modelado de bases de datos relacionales, persistencia desacoplada y control metódico de versiones.
+            </p>
+          </div>
+
+          <div class="grid-habilidades">
+            
+            <!-- 01: Java -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">&lt;Java/&gt;</span>
+                </div>
+                <h3 class="card-titulo">Desarrollo en Java</h3>
+                <div class="card-subtitulo">POO, Swing (JFrame) &amp; Concurrencia</div>
+                <p class="card-cuerpo">
+                  Programación orientada a objetos, creación de interfaces de escritorio con Swing (JFrame), gestión de concurrencia e hilos y conexión a bases de datos mediante JDBC.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> POO sólida y arquitectura limpia</li>
+                <li><span class="bullet">›</span> Interfaces de escritorio Swing (JFrame)</li>
+                <li><span class="bullet">›</span> Concurrencia y gestión de hilos</li>
+                <li><span class="bullet">›</span> Conexión a bases de datos con JDBC</li>
+              </ul>
+            </article>
+
+            <!-- 02: Android -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">Android</span>
+                </div>
+                <h3 class="card-titulo">Desarrollo Móvil · Android</h3>
+                <div class="card-subtitulo">Android Studio, Activities &amp; Layouts</div>
+                <p class="card-cuerpo">
+                  Creación de aplicaciones en Android Studio, gestión del ciclo de vida de Activities, diseño de layouts en XML y consumo de servicios web.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> Entorno Android Studio &amp; SDK</li>
+                <li><span class="bullet">›</span> Ciclo de vida completo de Activities</li>
+                <li><span class="bullet">›</span> Diseño de interfaces y layouts en XML</li>
+                <li><span class="bullet">›</span> Consumo e integración de servicios web</li>
+              </ul>
+            </article>
+
+            <!-- 03: UI/UX -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">UI / UX</span>
+                </div>
+                <h3 class="card-titulo">Diseño de Interfaces · UI/UX</h3>
+                <div class="card-subtitulo">Figma &amp; Adobe Creative Suite</div>
+                <p class="card-cuerpo">
+                  Prototipado interactivo y sistemas de diseño en Figma; maquetación y diseño visual con Adobe Creative Suite: Photoshop, Illustrator e InDesign.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> Prototipado interactivo en Figma</li>
+                <li><span class="bullet">›</span> Creación de sistemas de diseño</li>
+                <li><span class="bullet">›</span> Adobe Photoshop e Illustrator</li>
+                <li><span class="bullet">›</span> Maquetación editorial en InDesign</li>
+              </ul>
+            </article>
+
+            <!-- 04: Bases de Datos -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">MySQL / BD</span>
+                </div>
+                <h3 class="card-titulo">Bases de Datos &amp; Persistencia</h3>
+                <div class="card-subtitulo">Modelado E/R, SQL, Triggers &amp; Ficheros</div>
+                <p class="card-cuerpo">
+                  Modelado relacional E/R, consultas SQL en MySQL, vistas, triggers y procedimientos almacenados; persistencia y tratamiento de ficheros, XML y JSON.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> Modelado entidad-relación (E/R)</li>
+                <li><span class="bullet">›</span> Consultas SQL en MySQL, vistas y triggers</li>
+                <li><span class="bullet">›</span> Procedimientos almacenados</li>
+                <li><span class="bullet">›</span> Persistencia en ficheros, XML y JSON</li>
+              </ul>
+            </article>
+
+            <!-- 05: Frontend Web -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">HTML/CSS</span>
+                </div>
+                <h3 class="card-titulo">Desarrollo Web Frontend</h3>
+                <div class="card-subtitulo">Estructuración HTML5, CSS3 &amp; DOM JS</div>
+                <p class="card-cuerpo">
+                  Estructuración y maquetación con HTML5 y CSS3, junto con manipulación básica del DOM mediante JavaScript para interacción dinámica.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> Maquetación semántica con HTML5</li>
+                <li><span class="bullet">›</span> Diseño responsive adaptativo en CSS3</li>
+                <li><span class="bullet">›</span> Manipulación del DOM con JavaScript</li>
+                <li><span class="bullet">›</span> Estilos modulares y CSS moderno</li>
+              </ul>
+            </article>
+
+            <!-- 06: Control de versiones -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">Git / IDEs</span>
+                </div>
+                <h3 class="card-titulo">Control de Versiones &amp; Entornos</h3>
+                <div class="card-subtitulo">Git, GitHub, IntelliJ, Eclipse &amp; Android Studio</div>
+                <p class="card-cuerpo">
+                  Flujo de trabajo con Git y GitHub; manejo de IntelliJ IDEA, Eclipse, NetBeans y Android Studio para el desarrollo integral de aplicaciones.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> Flujo de trabajo con Git y GitHub</li>
+                <li><span class="bullet">›</span> Gestión de ramas y commits atómicos</li>
+                <li><span class="bullet">›</span> IntelliJ IDEA, Eclipse y NetBeans</li>
+                <li><span class="bullet">›</span> Entornos de compilación y depuración</li>
+              </ul>
+            </article>
+
+            <!-- 07: Gestión empresarial ERP -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">ERP Odoo</span>
+                </div>
+                <h3 class="card-titulo">Gestión Empresarial · ERP</h3>
+                <div class="card-subtitulo">Odoo: CRM, Ventas &amp; Inventario</div>
+                <p class="card-cuerpo">
+                  Parametrización y gestión de módulos de negocio en Odoo: CRM, Ventas e Inventario para la administración ágil de flujos comerciales.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> Parametrización de ERP Odoo</li>
+                <li><span class="bullet">›</span> Gestión de oportunidades y CRM</li>
+                <li><span class="bullet">›</span> Módulos de ventas y facturación</li>
+                <li><span class="bullet">›</span> Control de existencias e inventario</li>
+              </ul>
+            </article>
+
+            <!-- 08: Sistemas y Seguridad -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">Linux / OS</span>
+                </div>
+                <h3 class="card-titulo">Sistemas &amp; Seguridad</h3>
+                <div class="card-subtitulo">Windows, Linux (Ubuntu), Terminal &amp; Redes</div>
+                <p class="card-cuerpo">
+                  Manejo de Windows y Linux (Ubuntu) mediante terminal y consola de comandos; nociones de ciberseguridad y administración de redes locales.
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> Administración en Windows y Linux Ubuntu</li>
+                <li><span class="bullet">›</span> Terminal Bash y consola de comandos</li>
+                <li><span class="bullet">›</span> Nociones fundamentales de ciberseguridad</li>
+                <li><span class="bullet">›</span> Configuración de redes locales (LAN)</li>
+              </ul>
+            </article>
+
+            <!-- 09: Posicionamiento y Rendimiento -->
+            <article class="card-base card-habilidad">
+              <div>
+                <div class="card-top">
+                  <span class="badge-tag">SEO / WPO</span>
+                </div>
+                <h3 class="card-titulo">Posicionamiento &amp; Rendimiento Web</h3>
+                <div class="card-subtitulo">SEO On-page, Accesibilidad &amp; WPO</div>
+                <p class="card-cuerpo">
+                  Conocimientos básicos de SEO on-page, estructura semántica y pautas de accesibilidad; optimización de tiempos de carga (WPO).
+                </p>
+              </div>
+              <ul class="card-lista">
+                <li><span class="bullet">›</span> SEO técnico on-page y metadatos</li>
+                <li><span class="bullet">›</span> Estructura semántica HTML estricta</li>
+                <li><span class="bullet">›</span> Pautas de accesibilidad web (WCAG)</li>
+                <li><span class="bullet">›</span> Optimización de tiempos de carga (WPO)</li>
+              </ul>
+            </article>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           5. SECCIÓN CURRÍCULUM VITAE (DISEÑO EDITORIAL LIMPIO)
+           ================================================================== -->
+      <section id="curriculum" class="seccion-curriculum seccion-padding">
+        <div class="contenedor">
+          
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="seccion-titulo">Currículum Vitae &amp; Formación</h2>
+              <p class="seccion-desc">
+                Especialización técnica, módulos superados y competencias profesionales orientadas a la incorporación laboral.
+              </p>
+            </div>
+            <div>
+              <button type="button" class="boton-primario" onclick="window.print()">
+                Guardar CV (PDF)
+              </button>
+            </div>
+          </div>
+
+          <!-- Formato editorial integrado en el papel sin cajas blancas envolventes -->
+          <div class="curriculum-wrap">
+            
+            <!-- Cabecera de perfil curricular -->
+            <div class="curriculum-header">
+              <div>
+                <h3 class="cv-perfil-titulo">MARÍA MORALES CASTILLO</h3>
+                <div class="cv-perfil-sub">
+                  DESARROLLO DE APLICACIONES MULTIPLATAFORMA · FRONTEND (UI/UX) &amp; BACKEND
+                </div>
+                <p class="cv-perfil-desc">
+                  Formación previa en Diseño Gráfico. Cuento con un marcado perfil orientado a frontend e interfaces, complementado con el aprendizaje de la lógica backend para comprender el ciclo completo y el funcionamiento del software. Mi objetivo es desarrollar soluciones multiplataforma intuitivas y funcionales, desde herramientas de gestión hasta aplicaciones móviles centradas en el usuario final, aportando compromiso, criterio visual y adaptabilidad en mis prácticas de empresa.
+                </p>
+              </div>
+
+              <!-- Bloque editorial de contacto con datos personales oficiales -->
+              <div class="cv-contacto-tarjeta">
+                <div class="linea-contacto"><strong>Ubicación:</strong> Granada, España</div>
+                <div class="linea-contacto"><strong>Teléfono:</strong> <a href="tel:663221387">663 22 13 87</a></div>
+                <div class="linea-contacto"><strong>Email:</strong> <a href="mailto:castillomoralesmaria@gmail.com">castillomoralesmaria@gmail.com</a></div>
+                <div class="linea-contacto"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/maria-morales-castillo/" target="_blank" rel="noopener noreferrer">maria-morales-castillo ↗</a></div>
+                <div class="linea-contacto"><strong>Permisos:</strong> Carné de conducir B · Vehículo propio</div>
+                <div class="estado-disponible">
+                  ● Disponible para prácticas de empresa &amp; contratación
+                </div>
+              </div>
+            </div>
+
+            <!-- Estructura en una sola columna: Formación, Experiencia, Competencias e Idiomas -->
+            <div class="cv-columna-unica">
+              
+              <!-- 1. Formación Académica -->
+              <div class="curriculum-bloque">
+                <h4 class="cv-bloque-titulo">Formación Académica</h4>
+                
+                <!-- Digitech FP -->
+                <div class="cv-item">
+                  <div class="cv-item-cabecera">
+                    <div>Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</div>
+                    <div class="cv-item-fecha">2025 – 2027</div>
+                  </div>
+                  <div class="cv-empresa-sub">
+                    Digitech FP · <span style="color: var(--color-acento-azul); font-weight: 700;">[Cursando]</span>
+                  </div>
+                  <div class="cv-grid-modulos">
+                    <div>› Java &amp; Swing: POO, interfaces de escritorio y concurrencia</div>
+                    <div>› Acceso a Datos: Conectores JDBC, patrones DAO, XML y JSON</div>
+                    <div>› Desarrollo Móvil: Android Studio, Activities y layouts XML</div>
+                    <div>› Bases de Datos: SQL relacional MySQL, vistas y triggers</div>
+                  </div>
+                </div>
+
+                <!-- Escuela Arte Granada -->
+                <div class="cv-item">
+                  <div class="cv-item-cabecera">
+                    <div>Diplomatura en Diseño Gráfico y Producción Multimedia</div>
+                    <div class="cv-item-fecha">2011 – 2014</div>
+                  </div>
+                  <div class="cv-empresa-sub">
+                    Escuela Arte Granada
+                  </div>
+                  <p style="font-size: var(--texto-sm); color: var(--color-texto); margin-top: 0.4rem; line-height: 1.6;">
+                    Especialización en comunicación visual, prototipado de interfaces, identidad corporativa y dominio experto de herramientas Adobe Creative Suite (Photoshop, Illustrator, InDesign).
+                  </p>
+                </div>
+
+                <!-- Bachillerato de Artes -->
+                <div class="cv-item">
+                  <div class="cv-item-cabecera">
+                    <div>Bachillerato de Artes</div>
+                  </div>
+                  <div class="cv-empresa-sub">
+                    Escuela de Artes Aplicadas y Oficios Artísticos de Motril
+                  </div>
+                  <div class="cv-empresa-sub">2009 – 2011</div>
+                </div>
+              </div>
+
+              <!-- 2. Experiencia Laboral -->
+              <div class="curriculum-bloque">
+                <h4 class="cv-bloque-titulo">Experiencia Laboral</h4>
+                
+                <!-- Explotaciones Martín Rodríguez -->
+                <div class="cv-item">
+                  <div class="cv-item-cabecera">
+                    <div>Preparación de Pedidos para Exportación</div>
+                    <div class="cv-item-fecha">Enero 2025 – Actualidad</div>
+                  </div>
+                  <div class="cv-empresa-sub">
+                    Explotaciones Martín Rodríguez
+                  </div>
+                  <ul class="cv-lista-puntos">
+                    <li>Confección y preparación de pedidos internacionales con gramaje y composición exactos.</li>
+                    <li>Control riguroso de calidad y trabajo ágil en equipo bajo estrictos plazos de expedición y logística.</li>
+                  </ul>
+                </div>
+
+                <!-- Supermercado Castillo -->
+                <div class="cv-item">
+                  <div class="cv-item-cabecera">
+                    <div>Atención al Cliente, Caja y Gestión de Aprovisionamiento</div>
+                    <div class="cv-item-fecha">2017 – Septiembre 2026 (9 años)</div>
+                  </div>
+                  <div class="cv-empresa-sub">
+                    Supermercado Castillo
+                  </div>
+                  <ul class="cv-lista-puntos">
+                    <li>Operación y gestión de sistemas TPV y cobro con arqueo de caja diario.</li>
+                    <li>Control de inventario, recepción y reposición metódica de mercancías.</li>
+                    <li>Resolución proactiva de incidencias, trabajo en equipo y alta responsabilidad organizativa.</li>
+                  </ul>
+                </div>
+
+                <!-- Kaprichos -->
+                <div class="cv-item">
+                  <div class="cv-item-cabecera">
+                    <div>Diseño Gráfico y Gestión de Tienda</div>
+                    <div class="cv-item-fecha">2014 – 2018 (4 años)</div>
+                  </div>
+                  <div class="cv-empresa-sub">
+                    Kaprichos
+                  </div>
+                  <ul class="cv-lista-puntos">
+                    <li>Diseño de identidad visual corporativa, maquetación y material publicitario comercial.</li>
+                    <li>Gestión integral de tienda, inventario, negociación básica con proveedores y atención personalizada.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 3. Habilidades Profesionales (Soft Skills) -->
+              <div class="curriculum-bloque">
+                <h4 class="cv-bloque-titulo">Habilidades Profesionales</h4>
+                <div class="cv-soft-skills-grid">
+                  <div class="chip-soft">
+                    <span class="chip-soft-bullet">›</span>
+                    <span>Atención al detalle y criterio visual</span>
+                  </div>
+                  <div class="chip-soft">
+                    <span class="chip-soft-bullet">›</span>
+                    <span>Resolución de problemas y pensamiento analítico</span>
+                  </div>
+                  <div class="chip-soft">
+                    <span class="chip-soft-bullet">›</span>
+                    <span>Organización y gestión del tiempo</span>
+                  </div>
+                  <div class="chip-soft">
+                    <span class="chip-soft-bullet">›</span>
+                    <span>Trabajo en equipo y comunicación efectiva</span>
+                  </div>
+                  <div class="chip-soft">
+                    <span class="chip-soft-bullet">›</span>
+                    <span>Adaptabilidad y aprendizaje continuo</span>
+                  </div>
+                  <div class="chip-soft">
+                    <span class="chip-soft-bullet">›</span>
+                    <span>Compromiso y alta responsabilidad</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Idiomas & Movilidad -->
+              <div class="curriculum-bloque">
+                <h4 class="cv-bloque-titulo">Idiomas &amp; Movilidad</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;" "margin-top: 0.5rem;">
+                  <div style="margin-top: 0.5rem;">
+                    <span style="font-family: var(--fuente-mono); font-size: var(--texto-xs); color: var(--color-apagado); text-transform: uppercase; font-weight: 700;">Disponibilidad y transporte:</span>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.35rem;">
+                      <span class="chip-soft"><span class="chip-soft-bullet">›</span> Inglés: Nivel A1 (Comprensión de documentación técnica de software)</span>
+                    </div>
+                  </div
+
+                  <div style="margin-top: 0.5rem;">
+                    <span style="font-family: var(--fuente-mono); font-size: var(--texto-xs); color: var(--color-apagado); text-transform: uppercase; font-weight: 700;">Disponibilidad y transporte:</span>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.35rem;">
+                      <span class="chip-soft"><span class="chip-soft-bullet">›</span> Carné de conducir B</span>
+                      <span class="chip-soft"><span class="chip-soft-bullet">›</span> Vehículo propio</span>
+                      <span class="chip-soft"><span class="chip-soft-bullet">›</span> Movilidad en Granada y alrededores</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           6. SECCIÓN CONTACTO (BLOQUE CENTRAL HOMOGÉNEO & LLAMADA A LA ACCIÓN)
+           ================================================================== -->
+      <section id="contacto" class="seccion-contacto seccion-padding">
+        <div class="contenedor">
+          
+          <div class="contacto-wrap-central">
+            
+            <!-- Encabezado centrado con llamada a la acción y titular monumental -->
+            <div class="contacto-header-centrado">
+              <h2 class="contacto-titulo-hablemos">¡HABLEMOS!</h2>
+              <p class="contacto-subtitulo-cta">
+                ¿Buscas incorporar una desarrolladora a tu equipo técnico o valorar una candidatura para prácticas de empresa (FCT)?
+                <br>
+                Estoy disponible para entrevistas técnicas, proyectos y nuevos retos en desarrollo de software.
+              </p>
+            </div>
+
+            <!-- Canales directos en gran tamaño sin subrayado -->
+            <div class="contacto-canales-centrados">
+              <div class="contacto-canal-destacado">
+                <a href="mailto:castillomoralesmaria@gmail.com" class="canal-enlace-limpio" aria-label="Enviar correo a castillomoralesmaria@gmail.com">
+                  <span class="canal-icono" aria-hidden="true">✉</span>
+                  <span>castillomoralesmaria@gmail.com</span>
+                </a>
+              </div>
+
+              <div class="contacto-canal-destacado">
+                <a href="tel:663221387" class="canal-enlace-limpio" aria-label="Llamar al 663 22 13 87">
+                  <span class="canal-icono" aria-hidden="true">✆</span>
+                  <span>663 22 13 87</span>
+                </a>
+              </div>
+
+              <div class="contacto-ubicacion-centrada">
+                <span>Granada, España · Disponibilidad Inmediata · Carné B y Vehículo propio</span>
+              </div>
+            </div>
+
+            <!-- Llamada a la acción homogénea (CTA) centrada: LinkedIn y GitHub -->
+            <div class="contacto-cta-acciones">
+              <a href="https://www.linkedin.com/in/maria-morales-castillo/" target="_blank" rel="noopener noreferrer" class="boton-primario btn-cta-grande">
+                LinkedIn ↗
+              </a>
+              <a href="https://github.com/maria-dev" target="_blank" rel="noopener noreferrer" class="boton-secundario btn-cta-grande">
+                GitHub ↗
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         7. PIE DE PÁGINA (FOOTER)
+         ==================================================================== -->
+    <footer class="footer-wrap">
+      <div class="contenedor footer-content">
+        <div>
+          <strong>María Morales Castillo // DAM</strong>
+          <span style="margin-left: 0.5rem; color: var(--color-apagado);">· Desarrollo de Aplicaciones Multiplataforma</span>
+        </div>
+        <div>
+          <a href="https://www.linkedin.com/in/maria-morales-castillo/" target="_blank" rel="noopener noreferrer" style="color: var(--color-acento-azul); font-weight: 700; text-decoration: none;">
+            LinkedIn: in/maria-morales-castillo
+          </a>
+        </div>
+        <div>
+          <a href="#" class="boton-secundario" style="padding: 0.35rem 0.75rem; font-size: 0.68rem;">
+            ▲ Volver al inicio
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ====================================================================
+         8. VENTANA MODAL: FICHA TÉCNICA DETALLADA
+         ==================================================================== -->
+    <div id="modal-ficha-tecnica" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="titulo-ficha-tecnica">
+      <div class="modal-content">
+        <div class="modal-top">
+          <div id="titulo-ficha-tecnica">FICHA_TECNICA // DETALLE DE ARQUITECTURA</div>
+          <button type="button" class="close-btn" aria-label="Cerrar ficha" onclick="cerrarFichaTecnica()">&times;</button>
+        </div>
+        <div id="contenido-ficha-tecnica" class="modal-body">
+          <!-- Rellenado dinámicamente por app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Script JavaScript unificado (Arquitectura MVC / DAO) -->
+    <script src="./app.js"></script>
+  </body>
+</html>

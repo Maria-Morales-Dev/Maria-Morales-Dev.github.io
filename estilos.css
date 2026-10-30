@@ -1,0 +1,1592 @@
+/* ==========================================================================
+   MARIA.DEV · SISTEMA DE DISEÑO UNIFICADO & ARQUITECTURA CSS3
+   Single Source of Truth (SSOT) · Estética Retro-Técnica 80s Editorial
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. SINGLE SOURCE OF TRUTH (DESIGN TOKENS GLOBALES EN :root)
+   Cualquier modificación realizada en este bloque se propaga a todo el sitio.
+   -------------------------------------------------------------------------- */
+:root {
+  /* PALETA CROMÁTICA MAESTRA (Papel Vintage & Tinta 1984) */
+  --color-papel: #f3efdf;                      /* Fondo crema papel vintage */
+  --color-papel-puro: var(--color-papel);      /* Cero fondos blancos: unificado con el papel vintage */
+  --color-tinta: #161616;                      /* Negro tinta carbón de alto contraste */
+  --color-texto: #222222;                      /* Color legible para textos de párrafo */
+  --color-apagado: #65645e;                    /* Gris cálido para metadatos y etiquetas secundarias */
+  --color-acento-coral: #475bd8;               /* Azul terminal clásico */
+  --color-acento-azul: #475bd8;                /* Azul terminal clásico */
+  --color-acento-amarillo: #f2c84b;            /* Amarillo retro terminal */
+  --color-acento-verde: #3f9d6f;               /* Verde fósforo para estados activos */
+  --color-linea: rgba(22, 22, 22, 0.75);       /* Separador oscuro nítido */
+
+  /* TIPOGRAFÍAS DE REFERENCIA (SINGLE SOURCE OF TRUTH) */
+  --fuente-display: 'IBM Plex Mono', monospace;  /* Titulares y encabezados técnicos */
+  --fuente-mono: 'IBM Plex Mono', monospace;     /* Monoespaciado técnico, tags y botones */
+  --fuente-sans: 'Inter', sans-serif;            /* Cuerpo de texto, párrafos y lectura */
+  --fuente-cuerpo: 'Inter', sans-serif;          /* Alias semántico para párrafos y descripciones */
+
+  /* ESCALAS TIPOGRÁFICAS PROPORCIONADAS */
+  --texto-xs: 0.6875rem;                       /* 11px */
+  --texto-sm: 0.78125rem;                      /* 12.5px */
+  --texto-base: 0.875rem;                      /* 14px */
+  --texto-md: 1.05rem;                         /* 16.8px */
+  --texto-lg: 1.25rem;                         /* 20px */
+  --texto-xl: 1.5rem;                          /* 24px */
+  --texto-2xl: 2.25rem;                        /* 36px */
+
+  /* TOKENS DE ESTRUCTURA Y BORDES (FLAT RETRO: CERO SOMBRAS SALIENTES) */
+  --borde-grosor: 2px;
+  --borde-tipo: solid;
+  --borde-color: var(--color-tinta);
+  --borde-maestro: var(--borde-grosor) var(--borde-tipo) var(--borde-color);
+  --borde-fino: 1.5px solid var(--color-tinta);
+  --radio-esquinas: 0px;                       /* Geometría ortogonal pura (cero redondeo) */
+  --sombra-saliente: none;                     /* Cero sombras duras sobresaliendo de esquinas */
+
+  /* TOKENS DE ESPACIADO Y RELLENO */
+  --espacio-seccion-y: 3.5rem;
+  --espacio-seccion-y-movil: 2.75rem;
+  --padding-caja: 1.5rem;
+  --padding-caja-movil: 1rem;
+  --ancho-maximo-contenedor: 1520px;
+  --ancho-fluido-contenedor: 92%;
+
+  /* TOKENS DE COMPONENTES INTERACTIVOS (BOTONES) */
+  --boton-padding-y: 0.65rem;
+  --boton-padding-x: 1.25rem;
+  --boton-fuente-size: var(--texto-sm);
+  --boton-peso: 700;
+
+  /* TRANSICIONES ESTANDARIZADAS */
+  --transicion-rapida: 120ms ease;
+  --transicion-media: 180ms ease;
+
+  /* ALIAS DE COMPATIBILIDAD SEMÁNTICA */
+  --paper: var(--color-papel);
+  --paper-bright: var(--color-papel-puro);
+  --ink: var(--color-tinta);
+  --muted: var(--color-apagado);
+  --coral: var(--color-acento-coral);
+  --blue: var(--color-acento-azul);
+  --yellow: var(--color-acento-amarillo);
+  --green: var(--color-acento-verde);
+  --line: var(--color-linea);
+  --borde-tarjeta: var(--borde-maestro);
+  --fondo-tarjeta: var(--color-papel-puro);
+  --sombra-tarjeta: var(--sombra-saliente);
+  --sombra-boton: var(--sombra-saliente);
+  --sombra-boton-hover: var(--sombra-saliente);
+  --radio-cajas: var(--radio-esquinas);
+  --padding-tarjeta: var(--padding-caja);
+  --padding-tarjeta-movil: var(--padding-caja-movil);
+  --ancho-maximo: var(--ancho-maximo-contenedor);
+}
+
+/* --------------------------------------------------------------------------
+   2. REINICIO TÉCNICO & CONTROL DEFENSIVO DE DESBORDAMIENTO
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  background-color: var(--color-papel);
+  background-image: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-papel);
+  background-image: none;
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--texto-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-display);
+  color: var(--color-tinta);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: var(--fuente-mono);
+  font-size: inherit;
+}
+
+.contenedor {
+  width: var(--ancho-fluido-contenedor, 92%);
+  max-width: var(--ancho-maximo-contenedor);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. BARRA SUPERIOR (HEADER) & MENÚ HAMBURGUESA MÓVIL
+   -------------------------------------------------------------------------- */
+.barra-navegacion {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: var(--color-papel);
+  border-bottom: var(--borde-maestro); /* Separación completa de extremo a extremo */
+}
+
+.barra-navegacion-interior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo-maria {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--fuente-mono);
+  font-weight: 700;
+  font-size: var(--texto-md);
+  color: var(--color-tinta);
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.logo-maria .cursor-terminal {
+  color: var(--color-acento-azul);
+  font-weight: 800;
+}
+
+.enlaces-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.enlaces-nav a {
+  position: relative;
+  color: var(--color-tinta);
+  transition: color var(--transicion-rapida);
+  padding-bottom: 4px;
+}
+
+.enlaces-nav a::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: var(--color-acento-azul);
+  transition: right var(--transicion-media);
+}
+
+.enlaces-nav a:hover::after {
+  right: 0;
+}
+
+.header-acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-nav-accion {
+  padding: 0.5rem 1.15rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.btn-hamburguesa {
+  display: none;
+  background-color: var(--color-papel-puro);
+  color: var(--color-tinta);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  padding: 0.45rem 0.75rem;
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  cursor: pointer;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: none;
+  transition: background-color var(--transicion-rapida);
+}
+
+.btn-hamburguesa:hover {
+  background-color: var(--color-papel);
+}
+
+.menu-movil-desplegable {
+  display: none;
+  background-color: var(--color-papel);
+  border-top: var(--borde-maestro);
+  padding: 1rem 0;
+}
+
+.menu-movil-desplegable.activo {
+  display: block;
+}
+
+.menu-movil-interior {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-movil-interior a {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-base);
+  font-weight: 700;
+  color: var(--color-tinta);
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--color-linea);
+}
+
+.menu-movil-interior a:last-child {
+  border-bottom: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. SISTEMA UNIFICADO DE BOTONES (FLAT RETRO, CERO SOMBRAS SALIENTES)
+   -------------------------------------------------------------------------- */
+.boton-primario {
+  background-color: var(--color-tinta);
+  color: var(--color-papel-puro);
+  font-family: var(--fuente-mono);
+  font-size: var(--boton-fuente-size);
+  font-weight: var(--boton-peso);
+  letter-spacing: 0.06em;
+  padding: var(--boton-padding-y) var(--boton-padding-x);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: none;
+  transition: opacity var(--transicion-media);
+  white-space: nowrap;
+}
+
+.boton-primario:hover {
+  opacity: 0.85;
+}
+
+.boton-secundario {
+  background-color: var(--color-papel-puro);
+  color: var(--color-tinta);
+  font-family: var(--fuente-mono);
+  font-size: var(--boton-fuente-size);
+  font-weight: var(--boton-peso);
+  letter-spacing: 0.06em;
+  padding: var(--boton-padding-y) var(--boton-padding-x);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: none;
+  transition: background-color var(--transicion-media);
+  white-space: nowrap;
+}
+
+.boton-secundario:hover {
+  background-color: rgba(22, 22, 22, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   5. COMPONENTE BASE DE TARJETA TÉCNICA (.card-base)
+   -------------------------------------------------------------------------- */
+.card-base,
+.card-habilidad {
+  background-color: var(--color-papel-puro);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  box-shadow: none;
+  padding: var(--padding-caja);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.card-proyecto {
+  background-color: var(--color-papel-puro);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.card-meta {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-apagado);
+  text-transform: uppercase;
+}
+
+.card-titulo,
+.card-habilidad h3,
+.proyecto-body h3 {
+  font-family: var(--fuente-display);
+  font-size: var(--texto-lg);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-tinta);
+  margin-bottom: 0.4rem;
+  text-wrap: balance;
+  word-break: break-word;
+}
+
+.card-subtitulo,
+.card-habilidad .sub,
+.proyecto-body .sub {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--color-acento-azul);
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+  text-wrap: balance;
+}
+
+.card-cuerpo,
+.card-habilidad p,
+.proyecto-body p {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.875rem;
+  color: var(--color-texto);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-wrap: pretty;
+}
+
+.card-lista,
+.conceptos-lista {
+  border-top: none;                    /* Cero líneas flotantes intermedias dentro de las tarjetas */
+  padding-top: 0.25rem;
+  margin-top: auto;
+  list-style: none;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  color: var(--color-tinta);
+}
+
+.card-lista li,
+.conceptos-lista li {
+  margin-bottom: 0.4rem;
+  text-wrap: pretty;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.card-lista li .bullet,
+.conceptos-lista li span {
+  color: var(--color-acento-azul);
+  font-weight: 800;
+}
+
+/* SISTEMA UNIFICADO DE ETIQUETAS Y BADGES */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  max-width: 100%;
+}
+
+.badge-tag,
+.badge-tecnologia,
+.tags span {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--color-tinta);
+  color: var(--color-tinta);
+  border-radius: var(--radio-esquinas);
+  box-shadow: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN HERO (PORTADA EDITORIAL CENTRADA DE ALTO IMPACTO)
+   -------------------------------------------------------------------------- */
+.seccion-hero {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  border-bottom: var(--borde-maestro); /* Separación clara de extremo a extremo */
+}
+
+.hero-content-wide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.6rem;
+  max-width: 980px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+/* Cajitas de información ordenadas y centradas sobre el titular */
+.hero-kicker-cajitas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.hero-cajita-item {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-tinta);
+  background-color: var(--color-papel-puro);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  padding: 0.4rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.hero-cajita-disponible {
+  background-color: var(--color-papel-puro);
+  color: var(--color-tinta);
+}
+
+.hero-cajita-disponible .kicker-dot {
+  color: var(--color-acento-verde);
+  font-size: 0.85em;
+}
+
+.hero-titulo-grande {
+  font-family: var(--fuente-display);
+  font-size: clamp(2.5rem, 6.5vw, 5.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.05;
+  color: var(--color-tinta);
+  text-align: center;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.hero-subtitulo-profesional {
+  font-family: var(--fuente-mono);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-tinta);
+  line-height: 1.45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.hero-subtitulo-profesional .prompt-flecha {
+  color: var(--color-acento-azul);
+  font-weight: 800;
+}
+
+.hero-subtitulo-profesional .destaque-coral,
+.hero-subtitulo-profesional .destaque-azul {
+  color: var(--color-acento-azul);
+}
+
+.hero-descripcion-grande {
+  font-family: var(--fuente-cuerpo);
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  line-height: 1.75;
+  margin: 0 auto;
+  max-width: 860px;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.hero-acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.enlace-contacto-hero {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  color: var(--color-tinta);
+  text-decoration: none;
+  padding: 0.75rem 1.15rem;
+  transition: color var(--transicion-rapida);
+}
+
+.enlace-contacto-hero:hover {
+  color: var(--color-acento-azul);
+  text-decoration: underline;
+}
+
+.hero-tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem 1.75rem;
+  padding-top: 0.75rem;
+  border-top: none;                    /* Cero líneas flotantes intermedias */
+  margin-top: 0.5rem;
+  max-width: 100%;
+}
+
+.tech-item {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  color: var(--color-apagado);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tech-item .tech-bullet {
+  color: var(--color-acento-azul);
+  font-weight: 800;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN HABILIDADES TÉCNICAS
+   -------------------------------------------------------------------------- */
+.seccion-padding {
+  padding-top: var(--espacio-seccion-y);
+  padding-bottom: var(--espacio-seccion-y);
+  border-bottom: var(--borde-maestro); /* Separación clara y completa de extremo a extremo */
+}
+
+.seccion-header {
+  margin-bottom: 2.5rem;
+}
+
+.seccion-titulo {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-bottom: 0.65rem;
+  text-wrap: balance;
+}
+
+.seccion-desc {
+  color: var(--color-apagado);
+  font-size: var(--texto-base);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.grid-habilidades {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. SECCIÓN PROYECTOS TÉCNICOS & FILTROS
+   -------------------------------------------------------------------------- */
+.proyectos-barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.filtros-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;               /* Oculta la barra en Firefox */
+  -ms-overflow-style: none;            /* Oculta la barra en IE y Edge */
+  cursor: grab;                        /* Indicador de deslizamiento interactivo */
+  user-select: none;                   /* Previene selección de texto al arrastrar */
+  -webkit-user-select: none;
+  scroll-behavior: auto;
+}
+
+.filtros-tabs::-webkit-scrollbar {
+  display: none;                       /* Oculta la barra en Chrome, Safari y Opera */
+  width: 0;
+  height: 0;
+}
+
+.filtros-tabs:active,
+.filtros-tabs.en-arrastre {
+  cursor: grabbing;
+}
+
+.tab-btn {
+  background: var(--color-papel-puro);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  color: var(--color-tinta);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: none;
+  transition: background-color var(--transicion-rapida);
+}
+
+.tab-btn:hover {
+  background-color: rgba(22, 22, 22, 0.08);
+}
+
+.tab-btn.activo {
+  background-color: var(--color-acento-azul);
+  color: var(--color-papel-puro);
+  box-shadow: none;
+}
+
+.grid-proyectos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.card-proyecto {
+  padding: 0;
+}
+
+.proyecto-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  background-color: var(--color-papel);
+  border-bottom: var(--borde-maestro);
+  overflow: hidden;
+}
+
+.proyecto-img-wrap img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.proyecto-cat-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background-color: var(--color-acento-amarillo);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  padding: 0.25rem 0.65rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  color: var(--color-tinta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.proyecto-body {
+  padding: var(--padding-caja);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.proyecto-pie {
+  background-color: var(--color-papel);
+  border-top: var(--borde-maestro);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.85rem var(--padding-caja);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+}
+
+.enlace-git {
+  color: var(--color-tinta);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color var(--transicion-rapida);
+}
+
+.enlace-git:hover {
+  color: var(--color-acento-azul);
+  text-decoration: underline;
+}
+
+.btn-ficha {
+  background: transparent;
+  border: none;
+  border-bottom: none;
+  color: var(--color-acento-coral);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  cursor: pointer;
+  padding-bottom: 0;
+  text-decoration: none;
+  transition: color var(--transicion-rapida), opacity var(--transicion-rapida);
+}
+
+.btn-ficha:hover {
+  color: var(--color-tinta);
+  border-bottom: none;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   9. SECCIÓN CURRÍCULUM VITAE (DISEÑO EDITORIAL LIMPIO SOBRE PAPEL VINTAGE)
+   -------------------------------------------------------------------------- */
+.curriculum-wrap {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.curriculum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 2rem;
+  border-bottom: none;
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.cv-perfil-titulo {
+  font-size: var(--texto-2xl);
+  color: var(--color-tinta);
+  margin-bottom: 0.25rem;
+}
+
+.cv-perfil-sub {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-base);
+  color: var(--color-acento-coral);
+  font-weight: 700;
+  margin-top: 0.25rem;
+  text-wrap: balance;
+}
+
+.cv-perfil-desc {
+  font-size: var(--texto-base);
+  color: var(--color-texto);
+  max-width: 640px;
+  margin-top: 0.75rem;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.cv-contacto-tarjeta {
+  background: transparent;
+  border: none;
+  border-left: none;
+  padding: 0.5rem 0;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  box-shadow: none;
+}
+
+.cv-contacto-tarjeta .linea-contacto {
+  margin-bottom: 0.35rem;
+}
+
+.cv-contacto-tarjeta .estado-disponible {
+  color: var(--color-acento-verde);
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.curriculum-bloque {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: none;
+}
+
+.curriculum-bloque:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cv-bloque-titulo {
+  font-family: var(--fuente-display);
+  font-size: var(--texto-xl);
+  margin-bottom: 1.25rem;
+  color: var(--color-tinta);
+  text-wrap: balance;
+}
+
+.cv-item {
+  background-color: transparent;
+  border: none;
+  border-left: none;
+  border-radius: 0;
+  padding: 0.4rem 0;
+  margin-bottom: 1.75rem;
+  box-shadow: none;
+}
+
+.cv-item-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--fuente-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-item-fecha {
+  color: var(--color-apagado);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+}
+
+.cv-grid-modulos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  font-size: var(--texto-sm);
+  color: var(--color-texto);
+  margin-top: 0.6rem;
+}
+
+.cv-lista-puntos {
+  padding-left: 1.25rem;
+  font-size: var(--texto-sm);
+  color: var(--color-texto);
+  line-height: 1.65;
+  margin-top: 0.6rem;
+}
+
+.cv-lista-puntos li {
+  margin-bottom: 0.35rem;
+  text-wrap: pretty;
+}
+
+.aptitudes-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+}
+
+.aptitud-chip {
+  background-color: transparent;
+  border: var(--borde-fino);
+  border-radius: var(--radio-esquinas);
+  padding: 0.65rem 0.4rem;
+  text-align: center;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.cv-columna-unica,
+.cv-grid-dos-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cv-empresa-sub {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--color-acento-azul);
+  margin-bottom: 0.45rem;
+}
+
+.cv-soft-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.chip-soft {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  padding: 0.45rem 0.65rem;
+  border: var(--borde-fino);
+  border-radius: var(--radio-esquinas);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: var(--color-papel);
+}
+
+.chip-soft-bullet {
+  color: var(--color-acento-azul);
+  font-family: var(--fuente-mono);
+  font-weight: 800;
+}
+
+.chip-idioma {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  padding: 0.5rem 0.85rem;
+  border: var(--borde-fino);
+  background-color: var(--color-papel);
+  margin-top: 0.5rem;
+}
+
+.cv-contacto-tarjeta a {
+  color: var(--color-tinta);
+  text-decoration: none;
+  transition: color var(--transicion-rapida);
+}
+
+.cv-contacto-tarjeta a:hover {
+  color: var(--color-acento-coral);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECCIÓN CONTACTO (FONDO AMARILLO VINTAGE #F2C84B & MÁXIMA LIMPIEZA)
+   -------------------------------------------------------------------------- */
+.seccion-contacto {
+  background-color: var(--color-acento-amarillo);
+  border-bottom: var(--borde-maestro); /* Separación completa de extremo a extremo */
+}
+
+#contacto.seccion-padding {
+  background-color: var(--color-acento-amarillo);
+}
+
+#contacto .seccion-desc {
+  max-width: none;               /* Se extiende de forma fluida a lo ancho */
+  color: var(--color-tinta);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 2.25rem;
+}
+
+/* Contenedor homogéneo centrado para la sección de contacto */
+.contacto-wrap-central {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.contacto-header-centrado {
+  margin-bottom: 2.75rem;
+}
+
+/* Titular monumental para ¡HABLEMOS! */
+.contacto-titulo-hablemos {
+  font-family: var(--fuente-display);
+  font-size: clamp(3.75rem, 10vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--color-tinta);
+  margin: 0 0 1.25rem 0;
+  text-wrap: balance;
+}
+
+.contacto-subtitulo-cta {
+  font-family: var(--fuente-cuerpo);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  color: var(--color-tinta);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 720px;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+
+/* Canales directos en gran tamaño sin subrayado */
+.contacto-canales-centrados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  margin-bottom: 2.25rem;
+}
+
+.contacto-canal-destacado {
+  font-family: var(--fuente-mono);
+  font-size: clamp(1.35rem, 3.5vw, 1.95rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.canal-enlace-limpio {
+  color: var(--color-tinta);
+  text-decoration: none;               /* Cero subrayado */
+  border-bottom: none !important;      /* Cero línea inferior */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  transition: color var(--transicion-rapida), opacity var(--transicion-rapida);
+}
+
+.canal-enlace-limpio:hover {
+  color: var(--color-acento-azul);
+  text-decoration: none;
+  border-bottom: none !important;
+  opacity: 0.9;
+}
+
+.canal-icono {
+  color: var(--color-acento-azul);
+  font-size: 1.1em;
+}
+
+.contacto-ubicacion-centrada {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-base);
+  color: var(--color-tinta);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+/* Llamada a la acción homogénea (CTA) centrada */
+.contacto-cta-acciones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.btn-cta-grande {
+  font-size: var(--texto-base);
+  padding: 0.85rem 2.25rem;
+  font-weight: 700;
+}
+
+/* Formulario integrado en tarjeta vintage */
+.contacto-form-contenedor {
+  background-color: var(--color-papel);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  padding: 2.25rem;
+  text-align: left;
+  box-shadow: none;
+}
+
+.contacto-form-intro {
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  color: var(--color-tinta);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-tinta);
+  margin-bottom: 0.45rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  background-color: var(--color-papel-puro);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  color: var(--color-tinta);
+  outline: none;
+  font-size: var(--texto-base);
+  box-shadow: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  background-color: var(--color-papel);
+  outline: 3px solid var(--color-acento-azul);
+  outline-offset: 2px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. VENTANAS MODALES (GESTOR CRUD Y FICHA TÉCNICA)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(22, 22, 22, 0.75);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-overlay.activo {
+  display: flex;
+}
+
+.modal-content {
+  background-color: var(--color-papel);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  width: 100%;
+  max-width: 820px;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: none;
+}
+
+.modal-top {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--color-acento-azul);
+  color: var(--color-papel-puro);
+  border-bottom: var(--borde-maestro);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+}
+
+.close-btn {
+  background-color: var(--color-acento-azul);
+  color: var(--color-papel-puro);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  padding: 0.2rem 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: opacity var(--transicion-rapida);
+}
+
+.close-btn:hover {
+  opacity: 0.85;
+}
+
+.modal-body {
+  padding: var(--padding-caja);
+}
+
+.modal-bot {
+  background-color: var(--color-papel-puro);
+  border-top: var(--borde-maestro);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+}
+
+.crud-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  margin-top: 1.25rem;
+  border: var(--borde-maestro);
+}
+
+.crud-table th {
+  background-color: var(--color-papel-puro);
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: var(--borde-maestro);
+  border-right: 1px solid var(--color-linea);
+  font-weight: 700;
+  font-size: var(--texto-xs);
+  text-transform: uppercase;
+}
+
+.crud-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-linea);
+  border-right: 1px solid var(--color-linea);
+  background-color: var(--color-papel-puro);
+}
+
+.crud-table tr:hover td {
+  background-color: var(--color-papel);
+}
+
+.ficha-modal-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ficha-banner-img {
+  width: 100%;
+  height: 200px;
+  border: var(--borde-maestro);
+  background: var(--color-papel);
+  overflow: hidden;
+}
+
+.ficha-banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ficha-metas-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+  color: var(--color-apagado);
+  text-transform: uppercase;
+}
+
+.ficha-grid-especificaciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+}
+
+.ficha-caja-especificacion {
+  background-color: var(--color-papel);
+  border: var(--borde-maestro);
+  border-radius: var(--radio-esquinas);
+  padding: 0.85rem;
+}
+
+.ficha-caja-especificacion .label {
+  font-weight: 700;
+  color: var(--color-apagado);
+  font-size: var(--texto-xs);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.ficha-caja-especificacion .valor {
+  color: var(--color-tinta);
+  font-weight: 700;
+}
+
+.ficha-descripcion-bloque h4 {
+  font-family: var(--fuente-display);
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--color-tinta);
+  text-wrap: balance;
+}
+
+.ficha-pie-acciones {
+  border-top: var(--borde-maestro);
+  padding-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   12. PIE DE PÁGINA (FOOTER)
+   -------------------------------------------------------------------------- */
+.footer-wrap {
+  border-top: none;
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  padding: 2.25rem 0;
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-sm);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-wrap a {
+  color: var(--color-acento-amarillo);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   13. MEDIA QUERIES RESPONSIVE (SIN DESBORDAMIENTOS)
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .hero-badges-fila {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-habilidades {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-proyectos {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-contacto {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .aptitudes-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --padding-caja: var(--padding-caja-movil);
+  }
+
+  .contenedor {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .enlaces-nav {
+    display: none;
+  }
+
+  .btn-hamburguesa {
+    display: inline-flex;
+  }
+
+  .barra-navegacion-interior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-nav-accion {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.72rem;
+    height: 34px;
+  }
+
+  .hero-titulo {
+    font-size: 2.2rem;
+  }
+
+  .ficha-grid-especificaciones {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-grid-modulos {
+    grid-template-columns: 1fr;
+  }
+
+  .aptitudes-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cv-grid-dos-col,
+  .cv-soft-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .curriculum-header {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .cv-contacto-tarjeta {
+    width: 100%;
+  }
+
+  .card-base,
+  .card-habilidad,
+  .proyecto-body,
+  .contacto-info-box,
+  .contacto-form-box,
+  .modal-body {
+    padding: var(--padding-caja-movil);
+  }
+
+  .card-proyecto {
+    padding: 0;
+  }
+
+  .proyecto-pie {
+    padding: 0.75rem var(--padding-caja-movil);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. ESTILOS DE IMPRESIÓN (PDF / PRINT)
+   -------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .barra-navegacion,
+  .seccion-hero,
+  .seccion-habilidades,
+  .seccion-proyectos,
+  .seccion-contacto,
+  .footer-wrap,
+  .no-print {
+    display: none !important;
+  }
+
+  .seccion-curriculum {
+    padding: 0 !important;
+    border: none !important;
+  }
+}
